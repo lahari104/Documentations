@@ -1,5 +1,8 @@
 ### Installing Jenkins and Integrating SonarQube With Jenkins:
---------------------------------------------------------------
+---------------------------------------------------------------
+* Jenkins is an open-source CI-CD automation tool.
+* SonarQube is a self-managed, automatic code review tool that systematically helps you deliver Clean Code. We can implement code coverage and Quality Gate using this.
+
 * Firstly, Login into AWS account with necessary credentials then select EC2 Service in AWS console, to create the server to run Jenkins inside the server.
 * Now create an EC2 instance with the operating system of our choice. Here, I have selected **ubuntu-22.04** as **OS** and I have given the name as **Jenkins-master** and I have selected **t2.micro** as the size for the **OS** which is a free tier instance which will be enough to host jenkins.
 
@@ -35,7 +38,7 @@
 
 Note:
 -----
-* Java11 will no longer be supported by Jenkins from `October 2024` and it will be deprecated so we need to you Java17 from there on.
+* Java11 will no longer be supported by Jenkins from `October 2024` and it will be deprecated so we need to use higher java version from there on.
 
 ![Preview](./Images/jenkins-9.png)
 
@@ -49,13 +52,6 @@ Note:
 ![Preview](./Images/jenkins-11.png)
 
 * After that I have added the below data in the shell script file to install Jenkins and saved the file using `:wq` instruction in `vi` editor(Use `:q` to exit out of the editor without saving the contents in the file).
-* we can also follow the official documentation of jenkins for the installation steps and we can directly run them in the server.
-
-![Preview](./Images/jenkins-12.png)
-
-[Installing Jenkins in Linux](https://www.jenkins.io/doc/book/installing/linux/)
-
-[Installing Jenkins in Ubuntu](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu)
 
 ```bash
 #!/bin/bash
@@ -68,12 +64,21 @@ sudo apt-get update
 sudo apt-get install Jenkins -y
 ```
 
+* we can also follow the official documentation of jenkins for the installation steps and we can directly run them in the server.
+
+![Preview](./Images/jenkins-12.png)
+
+[Installing Jenkins in Linux](https://www.jenkins.io/doc/book/installing/linux/)
+
+[Installing Jenkins in Ubuntu](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu)
+
+
 * After placing the above contents in the shell script file run the shell script using
 `sh jenkins.sh` command to run the script which will install jenkins in our server as below.
 
 ![Preview](./Images/jenkins-13.png)
 
-*  The above lines in the script will install Jenkins to do that I have ran `sh Jenkins.sh` command to execute the script then we need to access Jenkins using the **PublicIp** of the server on `8080` port.
+*  The above lines in the script will install Jenkins, to do that I have ran `sh Jenkins.sh` command to execute the script then we need to access Jenkins using the **PublicIp** of the server on `8080` port.
 
 ![Preview](./Images/jenkins-14.png)
 
@@ -89,7 +94,7 @@ sudo apt-get install Jenkins -y
 
 ![Preview](./Images/jenkins-19.png)
 
-* After the installing jenkins we need to configure the user with credentials by following below steps then we can able to configure jenkins with that user.It is better to save these credentials(username and password) as these credentials are essential to login to the jenkins server.
+* After the installing jenkins we need to configure the user with credentials by following below steps then we can able to configure jenkins with that user. It is better to save these credentials(username and password) as these credentials are essential to login to the jenkins server.
 
 ![Preview](./Images/jenkins-20.png)
 
@@ -97,7 +102,7 @@ sudo apt-get install Jenkins -y
 
 ![Preview](./Images/jenkins-22.png)
 
-* After accessing the Jenkins home page then we can able to Jenkins Dashboard like the below then we need to create the type of project of our choice then run the pipelines.
+* After accessing the Jenkins home page then we can able to see Jenkins Dashboard like the below then we need to create the type of project of our choice then run the pipelines.
 
 ![Preview](./Images/jenkins-23.png)
 
@@ -127,13 +132,14 @@ sudo apt-get install Jenkins -y
 ![Preview](./Images/jenkins-26.png)
 ![Preview](./Images/jenkins-27.png)
   
-* At No. of Executors give the number on how many parallel jobs that can run at once, here I have selected `1`. 
+* At No.of Executors give the number for no.of parallel jobs that can run at once, Here I have selected `1`. 
   
-* At Remote Root Directory give a path at which you want to  clone the repositories in the node, so that Jenkins will clone the repositories in this path which were given in the pipeline, here, I have give the path as /home/ubuntu/sonar ( this will create a folder called “sonar” in the home path of the ubuntu server and clone the repositories in this folder).
+* At Remote Root Directory give a path at which you want to clone the repositories in the node, so that Jenkins will clone the repositories in this path which were given in the pipeline, here, I have give the path as `/home/ubuntu/sonar` ( this will create a folder called `sonar` in the home path of the ubuntu server and clone the repositories in this folder).
 
 ![Preview](./Images/jenkins-28.png)
   
-* At Labels section give a label to the node, Jenkins will able to differentiate the nodes and runs the pipelines based on the node labels only. Here I have given the label name as `sonar-spc`.  
+* At Labels section give a label to the node, Jenkins will able to differentiate the nodes and runs the pipelines and builds the code inside the nodes based on the node labels only. Here I have given the label name as `sonar-spc`.
+
 * At usage section select `label expression matching node` option. 
   
 * At launch method select `launching via ssh` option, at `Host` option give the privateIp of the node, at `host key verification strategy` select the non verifying strategy and to add the credentials follow the below steps 
@@ -168,7 +174,7 @@ sudo apt-get install Jenkins -y
 
 ![Preview](./Images/jenkins-36.png)
 
-* To clone any git repository we need to install Git. Follow the installation steps any article over the internet and install git.
+* To clone any git repository we need to install Git. Follow the installation steps using any article over the internet and install git.
 
 * After installing git we need to configure the git with our github account credentials using the following commands
 
@@ -221,11 +227,11 @@ pipeline{
 ![Preview](./Images/jenkins-37.png)
 ![Preview](./Images/jenkins-38.png)
 
-* After making the necessary changes run the pipeline by clicking on `Build now` at pipeline Dashboard and If all the configurations that we have done is correct pipeline will run and it clones our repository and it builds the code and it will give a package (Artifact) of our code.
+* After making the necessary changes run the pipeline by clicking on `Build now` at pipeline Dashboard and If all the configurations that we have done is correct pipeline will run and it clones our repository and it builds the code and it will give the package (Artifact) of our code.
 
 ![Preview](./Images/jenkins-39.png)
 
-* Here, as I have used Java project, we will get the artifact which is the `.jar` file in target folder as shown below.
+* Here, as I have used Java project, we will get the artifact which is the `.jar` file in target folder as shown below. We might get `.war` file also but this will depends on the pom.xml configuration, this project will generate `.jar` file.
 
 ![Preview](./Images/jenkins-40.png)
   
@@ -236,6 +242,9 @@ pipeline{
 * Here, I have installed SonarQube using docker, for this we need to install Docker in the master using the below steps.
 
 [Docker Install Script](https://get.docker.com)
+
+Docker Install commands:
+------------------------
 
 `curl -fsSL https://get.docker.com -o install-docker.sh` && `sh install-docker.sh`
 
@@ -262,7 +271,7 @@ this will ask for credentials use `admin` for both username and password then up
   
 * Now we need to configure the sonarqube with Jenkins, for this go to the manage Jenkins and select configuration and search for sonarqube, at the sonarqube configuration give the sonarqube server ip address with port at host sections, give a name to the configuration, at the token section generate a token in sonarqube dashboard add the token in the credentials and select the token and save the configuration.
   
-![Preview](./Images/jenkins-45.png)  
+![Preview](./Images/jenkins-45.png)
 ![Preview](./Images/jenkins-46.png)
   
 * To generate the sonarqube token go to the sonarqube dashboard and select the profile and administration and in the security you can generate the token.
