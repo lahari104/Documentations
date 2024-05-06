@@ -185,7 +185,7 @@ sudo apt-get install Jenkins -y
 * Below are the contents of the my Jenkinsfile.
 
 ```groovy
-  pipeline{
+pipeline{
     agent {
         label 'sonar-spc'
     }
