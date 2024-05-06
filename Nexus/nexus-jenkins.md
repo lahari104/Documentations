@@ -220,7 +220,7 @@ pipeline{
     stages{
         stage('clone'){
             steps{
-                git url: 'https://github.com/lahari104/spring-petclinic.git',
+                git url: 'https://github.com/spring-projects/spring-petclinic.git',
                     branch: 'nexus'
             }
         }
