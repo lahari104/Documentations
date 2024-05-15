@@ -254,6 +254,28 @@ pipeline{
 
 * After making the necessary changes run the pipeline by clicking on `Build now` at pipeline Dashboard and If all the configurations that we have done is correct pipeline will run and it clones our repository and it builds the code and it will give the package (Artifact) of our code.
 
+* Now we need to install tomcat server in the node in order to integrate and to host our application inside the tomcat server.
+
+* We can install tomcat9 directly using `sudo apt install tomcat9 -y` in ubuntu which is the step I have followed to install tomcat from pipeline or we can also follow any official documentation to install it by downloading the tomcat tar file.
+
+[Download Tomcat](https://tomcat.apache.org/download-90.cgi)
+
+* After installing tomcat in the node we need to copy the artifact which was build above (.war file) to the webapps folder of the tomcat server which will be present at `/var/lib/tomcat9/webapps` path of the node where we have installed `tomcat9`.
+
+* Once we copied our file to the webapps folder tomcat will run the application. 
+
+* As we have made changes in the webapps path we need to restart the tomcat service in-oder get the configuration changes which we have made
+
+Commands:
+---------
+`sudo systemctl daemon-reload`
+`sudo systemctl restart tomcat9.service`
+
+* verify the tomcat service status using `sudo systemctl status tomcat9.service`
+* If the service is up running then we can able to access our application on port `8080`.
+
+* To automate this process I have integrated these steps in the jenkinsfile which I have written as below.
+
 * Below is the pipeline that I have used to build the project which i have taken 
 
 ```groovy
@@ -277,11 +299,16 @@ pipeline{
                 sh 'mvn clean package'
                 sh 'sudo apt update'
                 sh 'sudo apt install tomcat9 -y'
-                sh 'sudo cp -r /home/ubuntu/tomcat/workspace/tomcat/gameoflife-web/target/gameoflife.war   /var/lib/tomcat9/webapps'
+                sh 'sudo cp -r /home/ubuntu/tomcat/workspace/tomcat/gameoflife-web/target/gameoflife.war  /var/lib/tomcat9/webapps'
                 sh 'sudo systemctl daemon-reload'
                 sh 'sudo systemctl restart tomcat9.service'
+                sh 'sudo systemctl status tomcat9.service'       
             }
         }
     }
 }
 ```
+
+* After the successful run of pipeline we can now access the application as below
+
+![Preview]( gameof life portal image)
