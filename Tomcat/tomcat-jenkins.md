@@ -254,6 +254,7 @@ pipeline{
 
 * After making the necessary changes run the pipeline by clicking on `Build now` at pipeline Dashboard and If all the configurations that we have done is correct pipeline will run and it clones our repository and it builds the code and it will give the package (Artifact) of our code.
 
+![Preview](./Images/tomcat-42.png)
 * Now we need to install tomcat server in the node in order to integrate and to host our application inside the tomcat server.
 
 * We can install tomcat9 directly using `sudo apt install tomcat9 -y` in ubuntu which is the step I have followed to install tomcat from pipeline or we can also follow any official documentation to install it by downloading the tomcat tar file.
@@ -309,6 +310,8 @@ pipeline{
 }
 ```
 
+![Preview](./Images/tomcat-43.png)
+
 * After the successful run of pipeline we can now access the application as below
 
-![Preview]( gameof life portal image)
+![Preview](./Images/tomcat-44.png)
