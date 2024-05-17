@@ -69,45 +69,40 @@
     -------------
       # Configuring user information used across all local repositories
       ------------------------------------------------------------------
-      ```bash
-      git config --global user.name “[firstname lastname]”
-      git config --global user.email “[valid-email]
-      git config --global user.password "[GitHub Token]"
-      ```
+      `git config --global user.name “[firstname lastname]”`
+      `git config --global user.email “[valid-email]`
+      `git config --global user.password "[GitHub Token]"`
 
       # Configuring user information, initializing and cloning repositories
       ----------------------------------------------------------------------
-      ```bash
-      git init  --- initialize an existing directory as a Git repository
-      git clone [url] --- retrieve an entire repository from a hosted location via URL
-      ```
+      `git init  --- initialize an existing directory as a Git repository`
+      `git clone [url] --- retrieve an entire repository from a hosted location via URL`
+
 
       # Working with snapshots
       -------------------------
-      ```bash
-      git status --- show modified files in working directory, staged for your next commit
-      git add [file] ---  add a file as it looks now to your next commit (adding the changes to staging area)
-      git commit -m “[descriptive message]” --- commit your changes to local repository
-      git push --set-upstream origin <branch-name> --- push the changes to remote repository with a new local branch
-      git push --- push the changes to remote repo
-      git reset [file] --- unstage a file while retaining the changes in working directory
-      ```
+      `git status --- show modified files in working directory, staged for your next commit`
+      `git add [file] ---  add a file as it looks now to your next commit (adding the changes to staging area)`
+      `git commit -m “[descriptive message]” --- commit your changes to local repository`
+      `git push --set-upstream origin <branch-name> --- push the changes to remote repository with a new local branch`
+      `git push --- push the changes to remote repo`
+      `git reset [file] --- unstage a file while retaining the changes in working directory`
+  
 
       # Others
       --------
-      ```bash
-      git branch --- check the current branch
-      git checkout -b <branch-name> --- create a new branch and checkout the branch
-      git checkout <branch-name> --- checkout to an existing branch
-      git pull --- fetch and merge any commits from the tracking remote branch
-      git log --- show all commits in the current branch’s history
-      git rebase [branch] --- apply any commits of current branch ahead of specified one
-      git stash --- Save modified and staged changes
-      git reset --hard [commit] --- clear staging area, rewrite working tree from specified commit
-      git reset --soft [commit] --- Resets the current branch to the specified commit, but keeps the changes in the index (staging area) and working directory.
-      git reset --mixed [commit] --- Resets the current branch to the specified commit and updates the index (staging area), but does not affect the working directory.
-      git revert [commit] --- used to create a new commit that undoes the changes made by a previous commit or a range of commits.
-      ```
+      `git branch --- check the current branch`
+      `git checkout -b <branch-name> --- create a new branch and checkout the branch`
+      `git checkout <branch-name> --- checkout to an existing branch`
+      `git pull --- fetch and merge any commits from the tracking remote branch`
+      `git log --- show all commits in the current branch’s history`
+      `git rebase [branch] --- apply any commits of current branch ahead of specified one`
+      `git stash --- Save modified and staged changes`
+      `git reset --hard [commit] --- clear staging area, rewrite working tree from specified commit`
+      `git reset --soft [commit] --- Resets the current branch to the specified commit, but keeps the changes in the index (staging area) and working directory`
+      `git reset --mixed [commit] --- Resets the current branch to the specified commit and updates the index (staging area), but does not affect the working directory`
+      `git revert [commit] --- used to create a new commit that undoes the changes made by a previous commit or a range of commits.`
+  
 
 [Sample Git Commands PDF](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
      
