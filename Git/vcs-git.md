@@ -121,7 +121,7 @@
   
   `git reset --soft [commit] --- Resets the current branch to the specified commit, but keeps the changes in the index (staging area) and working directory`
   
-  `git reset --mixed [commit] --- Resets the current branch to the         specified commit and updates the index (staging area), but does not affect the working directory`
+  `git reset --mixed [commit] --- Resets the current branch to the specified commit and updates the index (staging area), but does not affect the working directory`
   
   `git revert [commit] --- used to create a new commit that undoes the changes made by a previous commit or a range of commits.`
 
