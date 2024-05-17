@@ -59,7 +59,7 @@
   
   **Commit**:
   -----------
-  * It is the snapshot of the changes made to files in the repository at a particular time. Each commit has a commit ID and this commit          ID. This commit ID will generated for each change that we push and git used SHA-1 alogorithm to generate the commit ID
+  * It is the snapshot of the changes made to files in the repository at a particular time. Each commit has a commit ID. This commit ID will generated for each change that we push and git used SHA-1 alogorithm to generate the commit ID
 
   **Branch**:
   ----------
@@ -150,3 +150,4 @@
 **GitHub**:
 -----------
 * GitHub is a platform built on top of Git that provides hosting for software development and version control using Git. It enhances Git with additional features for collaboration, code review, project management, and continuous integration/continuous deployment (CI/CD).
+ 
