@@ -133,6 +133,8 @@
   `git log --- show all commits in the current branch’s history`
   
   `git rebase [branch] --- apply any commits of current branch ahead of specified one`
+
+  `git cherry-pick [commit] --- picking a specific commit (or) a specific set of commits from one branch to another`
   
   `git stash --- Save modified and staged changes`
   
