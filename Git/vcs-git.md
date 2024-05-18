@@ -35,7 +35,7 @@
 * There are five stages in git they are:
 
   **Working Tree**:
-    * The working tree, also known as the working directory, refers to the directory on your filesystem where you are currently working. It contains the files of your project. Here, we will make the changes
+    * The working tree, also known as the working directory, refers to the directory on your filesystem where you are currently working. It contains the files of your project. Here, we will make the changes.
 
   **Staging area**:
     * The staging area, or index, is a intermediate area between your working directory and the Git repository. It holds changes that you want to include in your next commit. (git add [file name])
@@ -44,7 +44,7 @@
     * The local repository is the database on your local machine where Git stores all the commits and version history of your project.(git commit -m "commit message")
 
   **Remote Repository**:
-    * The remote repository is a copy of your local repository hosted on a remote server like GitHub, GitLab, or Bitbucket. (git push)
+    * The remote repository is a copy of your local repository hosted on a remote server like GitHub, GitLab or Bitbucket. (git push)
 
   **Stash Area**:
     * The stash area is a temporary storage area in Git where you can store changes that are not ready to be committed or that you want to temporarily set aside.(git stash)
@@ -74,7 +74,7 @@
   * Fork is a copy of an existing repository in which the new owner disconnects the codebase from previous committers.
 
   **Pull**:
-  --------
+  ---------
   * It is used to fetch and download content from a remote repository and immediately update the local repository to match that content.
 
   **Merge**:
