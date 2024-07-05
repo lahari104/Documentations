@@ -330,7 +330,7 @@ docker run -d --name=metricbeat \
 
 * Then login to kibana dashboard and to Configure Index Patterns > Go to Management > Index Patterns.
 
-* Create index patterns for filebeat-* and metricbeat-*.
+* Create index patterns for `filebeat-*` and `metricbeat-*`.
 
 * Navigate to Discover in Kibana to start exploring logs and metrics collected from your EC2 instance.
 
